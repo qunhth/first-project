@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 using namespace std;
 
-int A[100];
+// vector<int> A;
+int A[6];
 int i, n, a;
 void swap(int *a, int *b){
     int temp = *a;
@@ -62,20 +65,57 @@ void printA(int A[], int n){
  }
 int main() {
     int n, i;
-    cout << "Nhap so phan tu mang A: ";
-    cin >> n;
-    for (i = 0; i < n; i++) {
-        cout << "Nhap A[" << i <<"]" << " ";
-        cin >> A[i];
+    // cout << "Nhap so phan tu mang A: ";
+    // cin >> n;
+    // for (i = 0; i < n; i++) {
+    //     cout << "Nhap A[" << i <<"]" << " ";
+    //     cin >> A[i];
+    // }
+    // FILE *fp = fopen("E:\\heapsortmin.txt", "r");
+    // if (fp == NULL) {
+    //     cout <<"CAN'T OPEN FILE!!!";
+    // }
+    // int k = 0;
+    // cout << "XUAT N" << n << " ";
+    // cout << "Mang A:";
+    // while (fscanf(fp, "%d", &A[k]) != EOF) {
+    //     k++;
+       
+    //     int n = sizeof(A) / sizeof(A[0]);
+        
+    //         for (i = 0; i < n; i++) {
+    //             cout << A[i] << " ";
+    //         }
+    // }
+    // cout << "XUAT N" << n << " ";
+    // fclose (fp);
+    
+    // doc file txt
+    ifstream file;
+    file.open("heapsortmin.txt");   // mo file de doc
+    file >> n;
+    cout << "so phan tu mang A:" << n << endl;
+     for (int i = 0; i <n; i++)
+    { 
+        file >> A[i];
     }
+    file.close();
+    system("pause");
 
-    cout << "Mang A:";
-    for (i = 0; i < n; i++) {
-        cout << A[i] << " ";
-    }
+
     cout << endl;
     heapsort(A,n);
-    cout << "Mang da sap xep: ";
+   
     swapMin(A,n);
+    
+    
+
+    //xuat file txt
+    ofstream file1 ("sapxep.txt");
+    cout << "Mang da sap xep: ";
     printA(A,n);
+    for(int i = 0; i < n; i++) {
+        file1 << A[i] << " ";
+    }
+    file1.close();
 } 
