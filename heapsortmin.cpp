@@ -2,7 +2,7 @@
 using namespace std;
 
 int A[100];
-
+int i, n, a;
 void swap(int *a, int *b){
     int temp = *a;
     *a = *b;
@@ -47,7 +47,12 @@ void heapsort(int A[], int n) {
         
 }
 
-
+void swapMin(int A[], int n){
+    for(int i =0; i < n/2; i++) {
+        a = n - i - 1;
+            swap(A[i], A[a]);
+        }
+    }
 
 void printA(int A[], int n){
     for (int i = 0; i < n; i++) {
@@ -71,6 +76,6 @@ int main() {
     cout << endl;
     heapsort(A,n);
     cout << "Mang da sap xep: ";
+    swapMin(A,n);
     printA(A,n);
-    
 } 
